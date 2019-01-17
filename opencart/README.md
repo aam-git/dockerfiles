@@ -38,17 +38,18 @@ Instructions for Composer
 ========
 
 ```
-1) create docker-compose.yml from content above, make sure to use a secure mysql root password
-2) docker-compose up -d
-3) go to your web url (eg. http://127.0.0.1)
-4) go through the opencart standard install procedure
+1) curl -sSL https://raw.githubusercontent.com/aam-git/dockerfiles/master/opencart/docker-compose.yml > docker-compose.yml
+2) use your text editor to edit docker-compose.yml (eg nano docker-compose.yml) and enter a more secure MYSQL_ROOT_PASSWORD
+3) docker-compose up -d
+4) go to your web url (eg. http://127.0.0.1)
+5) go through the opencart standard install procedure
  - DB Driver is "MySQLi"
  - Hostname is "mysql"
  - Username is "root"
  - Password is "secure_password_here" (though you should have changed this)
  - Database is "opencart"
  - Enter your own details for step 2
-5) Opencart Install should now be complete, you can now delete the install folder, and start using opencart.
+6) Opencart Install should now be complete, you can now delete the install folder, and start using opencart.
 ```
 
 Please note this is not fully tested yet, so please make sure to fully test everything before taking it into a production environment.
