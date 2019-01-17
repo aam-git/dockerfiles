@@ -1,6 +1,6 @@
 Opencart 3.0.3.1
 ========
-powered by Apache 2, PHP7.2-fpm, MySQL 8.0.13 and Mcrypt 1.0.2
+powered by Apache 2, PHP7.3.1-fpm, MySQL 8.0.13 and Mcrypt 1.0.2
 
 
 [OpenCart][1] is designed feature rich, easy to use, search engine
