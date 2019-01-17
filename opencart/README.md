@@ -49,7 +49,8 @@ Instructions for Composer
  - Password is "secure_password_here" (though you should have changed this in step 2)
  - Database is "opencart"
  - Enter your own details for step 2
-6) Opencart Install should now be complete, you can now delete the install folder, and start using opencart.
+6) Opencart Install should now be complete, you can now delete the install folder.
+7) Log into admin, in the popup for Storage location, change it to anywhere under "/var/www/" for example "/var/www/storage"
 ```
 
 Please note this is not fully tested yet, so please make sure to fully test everything before taking it into a production environment.
