@@ -6,7 +6,7 @@ FROM php:7.3.1-apache
 MAINTAINER aaron <info@aamservices.uk>
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git zip
+    apt-get install -y --no-install-recommends git zip libzip-dev
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 
