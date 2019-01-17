@@ -9,28 +9,35 @@ friendly and with a visually appealing interface.
 ## docker-compose.yml
 
 ```yaml
-version: '2'
+version: '3.2'
 services:
   mysql:
     image: mysql:8.0
+    container_name: mysql
+    hostname: mysql
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       - MYSQL_DATABASE=opencart
       - MYSQL_ROOT_PASSWORD=change_to_secure_password
+    restart: always
     volumes:
       - mysql_data:/var/lib/mysql
   opencart:
-    image: aamservices/opencart
+    image: aamservices/opencart:latest
+    container_name: opencart
+    hostname: opencart
+    restart: always
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - opencart_data:/var/www/html
+      - opencart_html:/var/www
     depends_on:
       - mysql
 volumes:
   mysql_data:
     driver: local
-  opencart_data:
+  opencart_html:
     driver: local
 ```
 
