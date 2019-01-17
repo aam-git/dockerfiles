@@ -46,7 +46,7 @@ Instructions for Composer
  - DB Driver is "MySQLi"
  - Hostname is "mysql"
  - Username is "root"
- - Password is "secure_password_here" (though you should have changed this)
+ - Password is "secure_password_here" (though you should have changed this in step 2)
  - Database is "opencart"
  - Enter your own details for step 2
 6) Opencart Install should now be complete, you can now delete the install folder, and start using opencart.
