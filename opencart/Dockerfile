@@ -2,11 +2,11 @@
 # Dockerfile for opencart
 #
 
-FROM php:7.3.1-apache
+FROM php:7.2-apache
 MAINTAINER aaron <info@aamservices.uk>
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git zip libzip-dev
+    apt-get install -y --no-install-recommends git zip
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 
@@ -17,7 +17,7 @@ RUN set -xe \
     && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysqli pdo_mysql zip \
+    && docker-php-ext-install gd mbstring mysqli zip \
     && pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
