@@ -1,0 +1,17 @@
+opencart:
+  image: aamservices/opencart
+  ports:
+    - "8000:80"
+  links:
+    - mysql
+  volumes:
+    - /var/www
+  restart: always
+
+mysql:
+  image: mysql:8.0
+  container_name: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=opencart
+  restart: always
