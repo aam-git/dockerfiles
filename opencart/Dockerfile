@@ -17,7 +17,7 @@ RUN set -xe \
     && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysqli zip \
+    && docker-php-ext-install gd mbstring mysql zip xmlrpc soap xml ldap curl \
     && pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
@@ -31,8 +31,9 @@ ENV OPENCART_FILE opencart.tar.gz
 RUN set -xe \
     && curl -sSL ${OPENCART_URL} -o ${OPENCART_FILE} \
     && echo "${OPENCART_MD5}  ${OPENCART_FILE}" | md5sum -c \
-    && tar xzf ${OPENCART_FILE} --strip 2 --wildcards '*/upload/' \
+    && tar xzf ${OPENCART_FILE} --strip 2 --wildcards '*/upload/'  \
     && mv config-dist.php config.php \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
+	&& rm -rf system/storage/vendor \
     && chown -R www-data:www-data /var/www
