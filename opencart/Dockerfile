@@ -17,7 +17,7 @@ RUN set -xe \
     && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysql zip xmlrpc soap xml ldap curl \
+    && docker-php-ext-install gd mbstring mysqli pdo_mysql zip xmlrpc soap xml ldap curl \
     && pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
