@@ -1,4 +1,4 @@
-opencart
+Opencart 3.0.3.1, Apache 2, PHP7.2-fpm, Mysql 8
 ========
 
 [OpenCart][1] is designed feature rich, easy to use, search engine
