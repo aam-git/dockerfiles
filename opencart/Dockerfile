@@ -36,4 +36,5 @@ RUN set -xe \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
     && rm -rf system/storage/vendor \
+	&& sed -i 's/MYSQL40//g' install/model/install/install.php
     && chown -R www-data:www-data /var/www
