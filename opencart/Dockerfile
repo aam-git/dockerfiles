@@ -5,11 +5,6 @@
 FROM php:7.3.1-apache
 MAINTAINER aaron <info@aamservices.uk>
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends git zip libzip-dev
-
-RUN curl --silent --show-error https://getcomposer.org/installer | php
-
 RUN a2enmod rewrite
 
 RUN set -xe \
@@ -35,6 +30,5 @@ RUN set -xe \
     && mv config-dist.php config.php \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
-    && rm -rf system/storage/vendor \
 	&& sed -i 's/MYSQL40//g' install/model/install/install.php \
     && chown -R www-data:www-data /var/www
