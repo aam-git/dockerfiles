@@ -7,6 +7,9 @@ MAINTAINER aaron <info@aamservices.uk>
 
 RUN a2enmod rewrite
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git zip libzip-dev
+
 RUN set -xe \
     && apt-get update \
     && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
