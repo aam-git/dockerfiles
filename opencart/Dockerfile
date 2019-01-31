@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
+    && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev unzip \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd mbstring mysqli pdo_mysql zip \
@@ -22,14 +22,16 @@ RUN set -xe \
 WORKDIR /var/www/html
 
 ENV OPENCART_VER 3.0.3.1
-ENV OPENCART_MD5 129774E989F704816E7462FC85E30B42
-ENV OPENCART_URL https://github.com/opencart/opencart/archive/${OPENCART_VER}.tar.gz
-ENV OPENCART_FILE opencart.tar.gz
+ENV OPENCART_MD5 6DB2210D60B20FAA00166FEB81468207
+ENV OPENCART_URL https://github.com/opencart/opencart/releases/download/${OPENCART_VER}/opencart-${OPENCART_VER}.zip
+ENV OPENCART_FILE opencart.zip
 
 RUN set -xe \
     && curl -sSL ${OPENCART_URL} -o ${OPENCART_FILE} \
     && echo "${OPENCART_MD5}  ${OPENCART_FILE}" | md5sum -c \
-    && tar xzf ${OPENCART_FILE} --strip 2 --wildcards '*/upload/' \
+    && unzip ${OPENCART_FILE} 'upload/*' -d /var/www/html/ \
+    && mv /var/www/html/upload/* /var/www/html/ \
+    && rm -r /var/www/html/upload/ \
     && mv config-dist.php config.php \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
