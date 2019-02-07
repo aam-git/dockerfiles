@@ -1,0 +1,15 @@
+#
+# Dockerfile for php 5.6
+#
+
+FROM php:5.6.40-apache
+MAINTAINER aaron <info@aamservices.uk>
+
+RUN a2enmod rewrite
+
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y libpng-dev libjpeg-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-install gd mysql pdo pdo_mysql
