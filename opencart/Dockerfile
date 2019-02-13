@@ -5,7 +5,7 @@
 FROM php:7.3.1-apache
 MAINTAINER aaron <info@aamservices.uk>
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite headers
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git zip libzip-dev
