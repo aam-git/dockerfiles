@@ -21,7 +21,7 @@ RUN set -xe \
 
 WORKDIR /var/www/html
 
-ENV OPENCART_VER 3.0.3.1
+ENV OPENCART_VER 3.0.3.2
 ENV OPENCART_MD5 6DB2210D60B20FAA00166FEB81468207
 ENV OPENCART_URL https://github.com/opencart/opencart/releases/download/${OPENCART_VER}/opencart-${OPENCART_VER}.zip
 ENV OPENCART_FILE opencart.zip
