@@ -1,4 +1,4 @@
-Opencart 3.0.3.1
+Opencart 3.0.3.2
 ========
 powered by Apache 2, PHP7.3.1-fpm, MySQL 8.0.13 and Mcrypt 1.0.2
 
