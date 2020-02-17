@@ -10,13 +10,14 @@ RUN a2enmod rewrite headers
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git zip libzip-dev
 
-RUN apt-get update && \
-    apt-get install -y libpng-dev libjpeg-dev libwebp-dev libmcrypt-dev unzip
-RUN rm -rf /var/lib/apt/lists/*
-RUN docker-php-ext-configure gd --with-webp --with-jpeg
-RUN docker-php-ext-install gd mbstring mysqli pdo_mysql zip
-RUN pecl install mcrypt-1.0.2
-RUN docker-php-ext-enable mcrypt
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y libpng-dev libjpeg-dev libwebp-dev libmcrypt-dev unzip oniguruma \
+    && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-configure gd --with-webp --with-jpeg \
+    && docker-php-ext-install gd mbstring mysqli pdo_mysql zip \
+    && pecl install mcrypt-1.0.2 \
+    && docker-php-ext-enable mcrypt
 
 WORKDIR /var/www/html
 
