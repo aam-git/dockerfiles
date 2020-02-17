@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y libpng-dev libjpeg-dev libwebp-dev libmcrypt-dev unzip oniguruma \
+    && apt-get install -y libpng-dev libjpeg-dev libwebp-dev libmcrypt-dev unzip libonig-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-webp --with-jpeg \
     && docker-php-ext-install gd mbstring mysqli pdo_mysql zip \
