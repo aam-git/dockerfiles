@@ -2,7 +2,7 @@
 # Dockerfile for opencart
 #
 
-FROM php:7-apache
+FROM php:7.3-apache
 MAINTAINER aaron <info@aamservices.uk>
 
 RUN a2enmod rewrite headers
@@ -12,12 +12,10 @@ RUN apt-get update && \
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev unzip \
+    && apt-get install -y libpng-dev libjpeg-dev libwebp-dev unzip \
     && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysqli pdo_mysql zip \
-    && pecl install mcrypt-1.0.2 \
-    && docker-php-ext-enable mcrypt
+    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr \
+    && docker-php-ext-install gd mysqli pdo_mysql zip
 
 WORKDIR /var/www/html
 
